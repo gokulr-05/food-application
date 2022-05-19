@@ -57,70 +57,100 @@ let Checkout = ({ setIsCheckOut, postData }) => {
         <h2 className="text-capitalize">checkout form </h2>
       </div>
       <form onSubmit={submitHandler} className="checkout-form">
-        <div className="checkout-form-container">
-          <label htmlFor="name" className="text-capitalize">
-            Name:
-          </label>
-          <input
-            value={cFormName}
-            onChange={(e) => {
-              setCFormName(e.target.value);
-            }}
-            type="text"
-            className="checkout-form form-control"
-            id="name"
-          />
-          {!isFormNameValid && <p className="text-danger">Name is invalid</p>}
+        <div>
+          <div className="checkout-form-container row">
+            <div className="col-3">
+              <label htmlFor="name" className="text-capitalize">
+                Name:
+              </label>
+            </div>
+            <div className="col-9">
+              <input
+                value={cFormName}
+                onChange={(e) => {
+                  setCFormName(e.target.value);
+                }}
+                type="text"
+                className="checkout-form form-control"
+                id="name"
+              />
+            </div>
+          </div>
+          {!isFormNameValid && (
+            <p className="text-danger">Name should not be empty</p>
+          )}
         </div>
 
-        <div className="checkout-form-container">
-          <label htmlFor="name" className="text-capitalize">
-            Street:
-          </label>
-          <input
-            value={cFormStreet}
-            onChange={(e) => {
-              setCFormStreet(e.target.value);
-            }}
-            type="text"
-            className="checkout-form  form-control"
-            id="name"
-          />
+        <div>
+          <div className="checkout-form-container row">
+            <div className="col-3">
+              <label htmlFor="name" className="text-capitalize">
+                Street:
+              </label>
+            </div>
+            <div className="col-9">
+              <input
+                value={cFormStreet}
+                onChange={(e) => {
+                  setCFormStreet(e.target.value);
+                }}
+                type="text"
+                className="checkout-form  form-control"
+                id="name"
+              />
+            </div>
+          </div>
           {!isFormStreetValid && (
-            <p className="text-danger">Street is invalid</p>
+            <p className="text-danger">Street should not be empty</p>
           )}
         </div>
-        <div className="checkout-form-container">
-          <label className="text-capitalize" htmlFor="name">
-            postal code:
-          </label>
-          <input
-            value={cFormPostal}
-            onChange={(e) => {
-              setCFormPostal(e.target.value);
-            }}
-            type="text"
-            className="checkout-form  form-control"
-            id="name"
-          />
+        <div>
+          <div className="checkout-form-container">
+            <div className="col-3">
+              <label className="text-capitalize" htmlFor="name">
+                postal code:
+              </label>
+            </div>
+            <div className="col-9">
+              <input
+                value={cFormPostal}
+                onChange={(e) => {
+                  setCFormPostal(e.target.value);
+                }}
+                type="text"
+                className="checkout-form  form-control"
+                id="name"
+              />
+            </div>
+          </div>
           {!isFormPostalValid && (
-            <p className="text-danger">Postal is invalid</p>
+            <p className="text-danger">Postal should not be empty</p>
           )}
         </div>
-        <div className="checkout-form-container">
-          <label className="text-capitalize" htmlFor="name">
-            city:
-          </label>
-          <input
-            value={cFormCity}
-            onChange={(e) => {
-              setCFormCity(e.target.value);
-            }}
-            type="text"
-            className="checkout-form  form-control"
-            id="name"
-          />
-          {!isFormCityValid && <p className="text-danger">City is invalid</p>}
+        <div>
+          <div className="checkout-form-container">
+            <div className="col-3">
+              <label className="text-capitalize" htmlFor="name">
+                city:
+              </label>
+            </div>
+            <div className="col-9">
+              <input
+                value={cFormCity}
+                onChange={(e) => {
+                  setCFormCity(e.target.value);
+                }}
+                type="text"
+                className="checkout-form  form-control"
+                id="name"
+              />
+            </div>
+          </div>
+          {!isFormCityValid && (
+            <p className="text-danger">
+              City name should be atleast character long
+            </p>
+          )}
         </div>
         <div className="checkout-form-btn-bucket">
           <div className="checkout-form-btn-bucket-1">
