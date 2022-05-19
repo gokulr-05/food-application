@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import MealItem from "./MealItem";
 import "./AvailableMeals.css";
 
@@ -29,7 +30,58 @@ let data = [
 ];
 
 let AvailableMeals = () => {
-  let arr = data.map((val) => {
+  let [err, setErr] = useState(false);
+  let [loading, setLoading] = useState(true);
+  let [mealsData, setMealsData] = useState([]);
+  console.log("mealsData=", mealsData);
+
+  let fetchMealData = async () => {
+    try {
+      setLoading(true);
+      let response = await fetch(
+        "https://food-order-app-dd19c-default-rtdb.firebaseio.com/meals.json"
+      );
+
+      if (!response.ok) {
+        throw new Error("Something Went Wrong");
+      }
+
+      let responseData = await response.json();
+
+      console.log("responseData=", responseData);
+      let fetchedData = [];
+
+      for (let key in responseData) {
+        fetchedData.push({ id: key, ...responseData[key] });
+      }
+
+      setMealsData(fetchedData);
+      setLoading(false);
+    } catch (err1) {
+      setErr(true);
+      setLoading(false);
+      console.log(err1.message);
+    }
+  };
+
+  let spinner = (
+    <div className="d-flex align-items-center">
+      <strong>Loading...</strong>
+      <div
+        className="spinner-border ms-auto"
+        role="status"
+        aria-hidden="true"
+      ></div>
+    </div>
+  );
+
+  let error_display = (
+    <div className="text-center">
+      <strong className="text-danger ">Something Went Wrong!!</strong>
+    </div>
+  );
+
+  let arr = mealsData.map((val) => {
     return (
       <div key={val.id}>
         {
@@ -47,9 +99,17 @@ let AvailableMeals = () => {
     );
   });
 
-  // console.log("arr=", arr);
+  useEffect(() => {
+    fetchMealData();
+  }, []);
 
-  return <div className="availableMeals">{arr}</div>;
+  return (
+    <div className="availableMeals">
+      {!err && !loading && <div>{arr}</div>}
+      {loading && !err && spinner}
+      {err && !loading && error_display}
+    </div>
+  );
 };
 
 export default AvailableMeals;

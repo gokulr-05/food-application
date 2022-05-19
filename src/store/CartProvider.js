@@ -68,6 +68,8 @@ let reducer = (state, action) => {
     }
 
     return { items: arr1, totalAmount: totamt };
+  } else if (action.type === "EmptyCart") {
+    return { items: [], totalAmount: 0 };
   }
 };
 
@@ -85,11 +87,16 @@ let CartProvider = (props) => {
     dispatchFunc({ type: "DeleteItem", item: item });
   };
 
+  let emptyCartHandler = () => {
+    dispatchFunc({ type: "EmptyCart" });
+  };
+
   let cartcontext = {
     items: state.items,
     totalAmount: state.totalAmount,
     addItem: AddItemHandler,
     deleteItem: deleteItemHandler,
+    emptyCart: emptyCartHandler,
   };
 
   return (
