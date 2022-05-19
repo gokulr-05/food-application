@@ -30,12 +30,15 @@ let Checkout = ({ setIsCheckOut, postData }) => {
     setIsFormPostalValid(!isEmpty(cFormPostal));
     setIsFormCityValid(isfiveChar(cFormCity));
 
-    if (
-      isFormNameValid &&
-      isFormStreetValid &&
-      isFormPostalValid &&
-      isFormCityValid
-    ) {
+    let flag =
+      !isEmpty(cFormName) &&
+      !isEmpty(cFormStreet) &&
+      !isEmpty(cFormPostal) &&
+      isfiveChar(cFormCity);
+
+    console.log("flag=", flag);
+
+    if (flag === true) {
       console.log("checkout js: before passing data to cart js");
       postData({
         name: cFormName,
@@ -64,7 +67,7 @@ let Checkout = ({ setIsCheckOut, postData }) => {
               setCFormName(e.target.value);
             }}
             type="text"
-            className="checkout-form"
+            className="checkout-form form-control"
             id="name"
           />
           {!isFormNameValid && <p className="text-danger">Name is invalid</p>}
@@ -80,7 +83,7 @@ let Checkout = ({ setIsCheckOut, postData }) => {
               setCFormStreet(e.target.value);
             }}
             type="text"
-            className="checkout-form"
+            className="checkout-form  form-control"
             id="name"
           />
           {!isFormStreetValid && (
@@ -97,7 +100,7 @@ let Checkout = ({ setIsCheckOut, postData }) => {
               setCFormPostal(e.target.value);
             }}
             type="text"
-            className="checkout-form"
+            className="checkout-form  form-control"
             id="name"
           />
           {!isFormPostalValid && (
@@ -114,7 +117,7 @@ let Checkout = ({ setIsCheckOut, postData }) => {
               setCFormCity(e.target.value);
             }}
             type="text"
-            className="checkout-form"
+            className="checkout-form  form-control"
             id="name"
           />
           {!isFormCityValid && <p className="text-danger">City is invalid</p>}

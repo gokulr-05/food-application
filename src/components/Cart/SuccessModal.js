@@ -3,7 +3,7 @@ let SuccessModal = () => {
     <>
       <button
         type="button"
-        class="btn btn-primary d-none"
+        className="btn btn-primary d-none"
         data-bs-toggle="modal"
         data-bs-target="#successmodal"
         id="successmodalbtn"
@@ -12,35 +12,35 @@ let SuccessModal = () => {
       </button>
 
       <div
-        class="modal fade"
+        className="modal fade"
         id="successmodal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="successmodal"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
               <h5
-                class="modal-title text-capitalize text-success"
+                className="modal-title text-capitalize text-success"
                 id="exampleModalLabel"
               >
                 order placed
               </h5>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body text-capitalize text-center text-success">
+            <div className="modal-body text-capitalize text-center text-success">
               Your Order has been placed successfully!!
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
                 Close
