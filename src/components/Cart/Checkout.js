@@ -148,7 +148,7 @@ let Checkout = ({ setIsCheckOut, postData }) => {
           </div>
           {!isFormCityValid && (
             <p className="text-danger">
-              City name should be atleast character long
+              City name should be atleast 5 characters long
             </p>
           )}
         </div>
